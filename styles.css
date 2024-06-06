@@ -7,6 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .main-container {
@@ -14,7 +15,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -29,12 +29,13 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    height: 80vh; /* Ограничиваем высоту окна чата */
 }
 
 header {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     background-color: #333;
     border-bottom: 1px solid #444;
     border-top-left-radius: 10px;
@@ -54,18 +55,19 @@ header h1 {
 
 .chat-window {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+    padding: 10px;
+    overflow-y: auto; /* Добавляем прокрутку */
     background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
 }
 
 .chat-window .message {
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
     border-radius: 10px;
     max-width: 70%;
+    word-wrap: break-word; /* Перенос длинных слов */
 }
 
 .chat-window .message.user {
@@ -82,14 +84,14 @@ header h1 {
     display: flex;
     border-top: 1px solid #444;
     background-color: #333;
-    padding: 20px;
+    padding: 10px;
     align-items: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
 input[type="text"] {
-    padding: 15px;
+    padding: 10px;
     border: none;
     background-color: #2c2c2c;
     color: #ffffff;
@@ -98,16 +100,19 @@ input[type="text"] {
     margin-right: 10px;
     font-size: 1em;
     outline: none;
+    box-sizing: border-box;
 }
 
 button {
-    padding: 15px 20px;
+    padding: 10px 15px;
     border: none;
     background-color: #4caf50;
     color: #ffffff;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Запрещаем уменьшать кнопку */
 }
 
 button:hover {
