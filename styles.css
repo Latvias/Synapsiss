@@ -108,7 +108,7 @@ button {
     background-color: rgb(122, 12, 12); /* Новый цвет кнопки */
     color: #ffffff;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 1px;
     font-size: 1em;
     box-sizing: border-box;
     flex-shrink: 0;
