@@ -30,7 +30,7 @@ function sendMessage() {
         setTimeout(() => {
             typeMessage(messages[messageIndex], chatWindow);
             messageIndex++;
-        }, 1500); // Задержка перед ответом в 1500 мс
+        }, 500); // Задержка перед ответом в 500 мс
     }
 }
 
