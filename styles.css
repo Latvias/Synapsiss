@@ -74,7 +74,7 @@ header h1 {
     align-self: flex-end;
 }
 
-.chat-window .message.bot {
+chat-window .message.bot {
     background-color: #444;
     align-self: flex-start;
 }
@@ -103,26 +103,17 @@ input[type="text"] {
 }
 
 button {
-    padding: 10px;
+    padding: 10px 15px;
     border: none;
     background-color: rgb(122, 12, 12); /* Новый цвет кнопки */
-    color: #333;
+    color: #ffffff;
     cursor: pointer;
-    border-radius: 0px;
+    border-radius: 5px;
     font-size: 1em;
     box-sizing: border-box;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
 }
 
 button:hover {
     background-color: rgb(155, 0, 0); /* Более темный оттенок для hover */
-}
-
-button img.send-icon {
-    width: 24px; /* Размер иконки */
-    height: 24px;
 }
