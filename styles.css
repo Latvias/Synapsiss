@@ -16,20 +16,19 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 0;
     box-sizing: border-box;
 }
 
 .chat-container {
     background-color: #2c2c2c;
-    border-radius: 10px;
+    border-radius: 0;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 600px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    height: 80vh; /* Ограничиваем высоту окна чата */
 }
 
 header {
@@ -38,8 +37,8 @@ header {
     padding: 10px;
     background-color: #333;
     border-bottom: 1px solid #444;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 header .logo {
@@ -56,7 +55,7 @@ header h1 {
 .chat-window {
     flex: 1;
     padding: 10px;
-    overflow-y: auto; /* Добавляем прокрутку */
+    overflow-y: auto;
     background-color: #1e1e1e;
     display: flex;
     flex-direction: column;
@@ -67,7 +66,7 @@ header h1 {
     padding: 10px;
     border-radius: 10px;
     max-width: 70%;
-    word-wrap: break-word; /* Перенос длинных слов */
+    word-wrap: break-word;
 }
 
 .chat-window .message.user {
@@ -86,8 +85,8 @@ header h1 {
     background-color: #333;
     padding: 10px;
     align-items: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 input[type="text"] {
@@ -106,15 +105,15 @@ input[type="text"] {
 button {
     padding: 10px 15px;
     border: none;
-    background-color: #4caf50;
+    background-color: rgb(175, 16, 16); /* Новый цвет кнопки */
     color: #ffffff;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
     box-sizing: border-box;
-    flex-shrink: 0; /* Запрещаем уменьшать кнопку */
+    flex-shrink: 0;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: rgb(155, 0, 0);
 }
