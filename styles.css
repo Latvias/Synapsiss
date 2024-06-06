@@ -103,7 +103,7 @@ input[type="text"] {
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px;
     border: none;
     background-color: rgb(122, 12, 12); /* Новый цвет кнопки */
     color: #ffffff;
@@ -115,5 +115,10 @@ button {
 }
 
 button:hover {
-    background-color: rgb(155, 0, 0);
+    background-color: rgb(155, 0, 0); /* Более темный оттенок для hover */
+}
+
+button img.send-icon {
+    width: 24px; /* Размер иконки */
+    height: 24px;
 }
