@@ -106,9 +106,9 @@ button {
     padding: 10px;
     border: none;
     background-color: rgb(122, 12, 12); /* Новый цвет кнопки */
-    color: #ffffff;
+    color: #333;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0px;
     font-size: 1em;
     box-sizing: border-box;
     flex-shrink: 0;
