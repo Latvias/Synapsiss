@@ -9,16 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function appendMessage(sender, text) {
         const messageElement = document.createElement("div");
         messageElement.classList.add("message", sender);
-        messageElement.textContent = text;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
+
+        if (text) {
+            typeResponse(text, messageElement);
+        }
     }
 
-    function typeResponse(text, delay = 100) {
+    function typeResponse(text, element, delay = 100) {
         let index = 0;
         const typing = setInterval(() => {
             if (index < text.length) {
-                chatBox.lastChild.textContent += text.charAt(index);
+                element.textContent += text.charAt(index);
                 index++;
                 chatBox.scrollTop = chatBox.scrollHeight;
             } else {
@@ -36,9 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         messageCount++;
 
         if (messageCount <= responses.length) {
-            appendMessage("bot", "");
             setTimeout(() => {
-                typeResponse(responses[messageCount - 1], 100);
+                appendMessage("bot", responses[messageCount - 1]);
             }, 500);
         }
     }
