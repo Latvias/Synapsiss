@@ -42,6 +42,7 @@ body {
     flex-grow: 1;
     padding: 10px;
     overflow-y: auto;
+    max-height: calc(90vh - 120px); /*
 }
 
 .input-container {
