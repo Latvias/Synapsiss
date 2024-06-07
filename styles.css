@@ -42,7 +42,28 @@ body {
     flex-grow: 1;
     padding: 10px;
     overflow-y: auto;
-    max-height: calc(80vh - 100px); /*
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 60%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: #444;
+    color: #fff;
 }
 
 .input-container {
@@ -76,8 +97,9 @@ body {
 @media (max-width: 600px) {
     .chat-container {
         width: 100%;
-        height: 100%;
-        max-height: 100vh;
+        height: auto;
+        max-height: 90vh;
+        margin: 20px;
     }
 
     .header h1 {
@@ -88,7 +110,8 @@ body {
         max-height: 30px;
         max-width: 30px;
     }
-        .chat-box {
+
+    .chat-box {
         max-height: calc(90vh - 120px); /* Adjust this value as needed */
     }
 }
