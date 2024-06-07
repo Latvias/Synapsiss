@@ -1,57 +1,52 @@
-const messages = ["Сообщение А", "Сообщение Б", "Сообщение В", "Сообщение Г"];
-let messageIndex = 0;
-
-document.getElementById('user-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
-});
-
-function sendMessage() {
+document.addEventListener("DOMContentLoaded", () => {
+    const chatBox = document.getElementById("chat-box");
     const userInput = document.getElementById("user-input");
-    const chatWindow = document.getElementById("chat-window");
+    const sendButton = document.getElementById("send-button");
 
-    if (userInput.value.trim() === "") return;
+    const responses = ["Сообщение А", "Сообщение Б", "Сообщение В", "Сообщение Г"];
+    let messageCount = 0;
 
-    // Отправка пользовательского сообщения
-    const userMessage = document.createElement("div");
-    userMessage.classList.add("message", "user");
-    userMessage.textContent = userInput.value;
-    chatWindow.appendChild(userMessage);
-
-    // Прокрутка окна чата вниз
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-
-    // Очистка поля ввода
-    userInput.value = "";
-
-    // Отправка ответного сообщения
-    if (messageIndex < messages.length) {
-        setTimeout(() => {
-            typeMessage(messages[messageIndex], chatWindow);
-            messageIndex++;
-        }, 500); // Задержка перед ответом в 500 мс
+    function appendMessage(sender, text) {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", sender);
+        messageElement.textContent = text;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-}
 
-function typeMessage(message, chatWindow) {
-    const botMessage = document.createElement("div");
-    botMessage.classList.add("message", "bot");
-    chatWindow.appendChild(botMessage);
+    function typeResponse(text, delay = 100) {
+        let index = 0;
+        const typing = setInterval(() => {
+            if (index < text.length) {
+                chatBox.lastChild.textContent += text.charAt(index);
+                index++;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } else {
+                clearInterval(typing);
+            }
+        }, delay);
+    }
 
-    let charIndex = 0;
-    const typingSpeed = 100; // 10 символов в секунду
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === "") return;
 
-    function typeChar() {
-        if (charIndex < message.length) {
-            botMessage.textContent += message.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeChar, typingSpeed);
-        } else {
-            // Прокрутка окна чата вниз после завершения печати
-            chatWindow.scrollTop = chatWindow.scrollHeight;
+        appendMessage("user", message);
+        userInput.value = "";
+        messageCount++;
+
+        if (messageCount <= responses.length) {
+            appendMessage("bot", "");
+            setTimeout(() => {
+                typeResponse(responses[messageCount - 1], 100);
+            }, 500);
         }
     }
 
-    typeChar();
-}
+    sendButton.addEventListener("click", sendMessage);
+    userInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+});
