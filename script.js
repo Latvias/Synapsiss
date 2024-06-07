@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i < content.length) {
                 typedContent += content[i++];
                 addMessage(typedContent, false);
-                chatBox.lastChild.textContent = typedContent;
             } else {
                 clearInterval(interval);
             }
