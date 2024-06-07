@@ -1,54 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const chatBox = document.getElementById("chat-box");
-    const userInput = document.getElementById("user-input");
-    const sendButton = document.getElementById("send-button");
+document.addEventListener('DOMContentLoaded', () => {
+    const messages = ["Сообщение А", "Сообщение Б", "Сообщение В", "Сообщение Г"];
+    let messageIndex = 0;
 
-    const responses = ["Сообщение А", "Сообщение Б", "Сообщение В", "Сообщение Г"];
-    let messageCount = 0;
+    const chatBox = document.getElementById('chat-box');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
 
-    function appendMessage(sender, text) {
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message", sender);
+    function addMessage(content, isUser) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', isUser ? 'user' : 'bot');
+        messageElement.textContent = content;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        if (text) {
-            typeResponse(text, messageElement);
-        }
-    }
-
-    function typeResponse(text, element, delay = 100) {
-        let index = 0;
-        const typing = setInterval(() => {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            } else {
-                clearInterval(typing);
-            }
-        }, delay);
     }
 
     function sendMessage() {
-        const message = userInput.value.trim();
-        if (message === "") return;
-
-        appendMessage("user", message);
-        userInput.value = "";
-        messageCount++;
-
-        if (messageCount <= responses.length) {
-            setTimeout(() => {
-                appendMessage("bot", responses[messageCount - 1]);
-            }, 500);
+        const userMessage = messageInput.value.trim();
+        if (userMessage) {
+            addMessage(userMessage, true);
+            messageInput.value = '';
+            if (messageIndex < messages.length) {
+                setTimeout(() => typeMessage(messages[messageIndex++]), 1000);
+            }
         }
     }
 
-    sendButton.addEventListener("click", sendMessage);
-    userInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            sendMessage();
-        }
+    function typeMessage(content) {
+        let typedContent = '';
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < content.length) {
+                typedContent += content[i++];
+                addMessage(typedContent, false);
+                chatBox.lastChild.textContent = typedContent;
+            } else {
+                clearInterval(interval);
+            }
+        }, 100);
+    }
+
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
     });
 });
