@@ -42,7 +42,7 @@ body {
     flex-grow: 1;
     padding: 10px;
     overflow-y: auto;
-    max-height: calc(90vh - 120px); /*
+    max-height: calc(80vh - 100px); /*
 }
 
 .input-container {
@@ -87,5 +87,8 @@ body {
     .logo {
         max-height: 30px;
         max-width: 30px;
+    }
+        .chat-box {
+        max-height: calc(90vh - 120px); /* Adjust this value as needed */
     }
 }
