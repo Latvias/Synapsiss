@@ -26,12 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function typeMessage(content) {
-        let typedContent = '';
         let i = 0;
         const interval = setInterval(() => {
             if (i < content.length) {
-                typedContent += content[i++];
-                addMessage(typedContent, false);
+                addMessage(content[i++], false);
             } else {
                 clearInterval(interval);
             }
