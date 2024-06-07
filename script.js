@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.textContent = content;
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
+        return messageElement;
     }
 
     function sendMessage() {
@@ -27,9 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function typeMessage(content) {
         let i = 0;
+        const messageElement = addMessage('', false);
         const interval = setInterval(() => {
             if (i < content.length) {
-                addMessage(content[i++], false);
+                messageElement.textContent += content[i++];
+                chatBox.scrollTop = chatBox.scrollHeight;
             } else {
                 clearInterval(interval);
             }
